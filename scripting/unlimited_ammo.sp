@@ -23,6 +23,8 @@ public void OnPluginStart()
 	HookEvent("weapon_reload", Event_WeaponReload);
 	HookEvent("weapon_fire_on_empty", Event_WeaponFireOnEmpty);
 	HookEvent("weapon_fire", Event_WeaponFire);
+	
+	AutoExecConfig(true, "plugin.unlimitedammo");
 }
 
 public void ConVarChanged(Handle hCVar, const char[] sOldV, const char[] sNewV)
