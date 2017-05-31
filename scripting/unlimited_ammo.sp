@@ -3,9 +3,9 @@
 
 public Plugin myinfo =
 {
-	name = "Unlimited Ammo [BHop]",
+	name = "Unlimited Ammo",
 	author = "Roy (Christian Deacon) and Franc1sco",
-	description = "Unlimited ammo for GFL's CS:S BHop server.",
+	description = "Unlimited ammo plugin for CS:S/CS:GO and possibly other games.",
 	version = "1.0.0",
 	url = "GFLClan.com"
 };
