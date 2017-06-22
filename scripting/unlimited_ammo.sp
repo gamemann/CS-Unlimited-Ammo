@@ -11,13 +11,11 @@ public Plugin myinfo =
 };
 
 ConVar g_cvMethod = null;
-int g_iMethod;
 
 public void OnPluginStart()
 {
 	/* ConVars */
 	g_cvMethod = CreateConVar("sm_ua_method", "0", "0 = use weapon reload and fire on empty event to add ammo, 1 = add extra ammo on weapon fire.");
-	HookConVarChange(g_cvMethod, ConVarChanged);
 	
 	/* Events */
 	HookEvent("weapon_reload", Event_WeaponReload);
@@ -27,19 +25,9 @@ public void OnPluginStart()
 	AutoExecConfig(true, "plugin.unlimitedammo");
 }
 
-public void ConVarChanged(Handle hCVar, const char[] sOldV, const char[] sNewV)
-{
-	OnConfigsExecuted();
-}
-
-public void OnConfigsExecuted()
-{
-	g_iMethod = GetConVarInt(g_cvMethod);
-}
-
 public Action Event_WeaponReload(Handle hEvent, const char[] sName, bool bDontBroadcast)
 {
-	if (g_iMethod != 0)
+	if (g_cvMethod.IntValue != 0)
 	{
 		return Plugin_Continue;
 	}
@@ -62,7 +50,7 @@ public Action Event_WeaponFireOnEmpty(Handle hEvent, const char[] sName, bool bD
 
 public Action Event_WeaponFire(Handle hEvent, const char[] sName, bool bDontBroadcast)
 {
-	if (g_iMethod != 1)
+	if (g_cvMethod.IntValue != 1)
 	{
 		return Plugin_Continue;
 	}
